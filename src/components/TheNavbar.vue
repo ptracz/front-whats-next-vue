@@ -22,7 +22,6 @@ export default {
   url(../fonts/august.otf) format("opentype");
 }
 .bar {
-  outline: 1px solid red;
   background: #4d4d4d;
   padding: 2rem 5rem;
 }
