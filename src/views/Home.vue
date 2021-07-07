@@ -4,9 +4,12 @@
       <the-navbar/>
       <v-row no-gutters class="justify-space-between">
         <v-spacer></v-spacer>
-        <v-col v-for="(item, index) in array" :key="index" cols="auto">
+        <v-col v-for="item in computedCategories" :key="item.name" cols="auto">
           <div class="category" :style="{'background-color': item['background-color']}">
-            <v-btn fab :color="item.color" @click="changeColor(item)"></v-btn>
+            <v-btn fab :color="item.color" @click="changeActive(item.name)" elevation="0">
+              <v-img :src="item.icon" max-height="65" max-width="65">
+              </v-img>
+            </v-btn>
           </div>
         </v-col>
         <v-spacer></v-spacer>
@@ -51,31 +54,36 @@ export default {
     TheNavbar
   },
   data: () => ({
-    array: [
-      {color: 'hsl(0,100%,15%)', activeColor: 'gray', isActive: false, 'background-color': 'white'},
-      {color: 'hsl(0,100%,25%)', activeColor: 'gray', isActive: false, 'background-color': 'white'},
-      {color: 'hsl(0,100%,35%)', activeColor: 'gray', isActive: false, 'background-color': 'white'},
-      {color: 'hsl(0,100%,50%)', activeColor: 'gray', isActive: false, 'background-color': 'white'},
-      {color: 'hsl(0,100%,65%)', activeColor: 'gray', isActive: false, 'background-color': 'white'},
-      {color: 'hsl(0,100%,75%)', activeColor: 'gray', isActive: false, 'background-color': 'white'},
-      {color: 'hsl(0,100%,85%)', activeColor: 'gray', isActive: false, 'background-color': 'white'}
+    categories: [
+      {isActive: false, name: 'activity'},
+      {isActive: false, name: 'food'},
+      {isActive: false, name: 'nature'},
+      {isActive: false, name: 'family'},
+      {isActive: false, name: 'creator'},
+      {isActive: false, name: 'trip'},
+      {isActive: false, name: 'monument'}
     ],
     cards: [1, 2, 3, 4, 7, 1, 43, 4, 1, 234, 12334],
   }),
-  methods: {
-    changeColor(item) {
-      if (item.isActive) {
-        item.color = item.colorCopy;
-        item['background-color'] = 'white'
-        item.isActive = !item.isActive;
-        return;
-      }
-      item.colorCopy = item.color;
-      item['background-color'] = '#4d4d4d'
-      item.color = item.activeColor;
-      item.isActive = !item.isActive;
-
+  computed: {
+    computedCategories() {
+      return this.categories.map(item => {
+        return {
+          ...item,
+          icon: this.getIcon({name: item.name, active: item.isActive}),
+        }
+      })
     }
+  },
+  methods: {
+    changeActive(name) {
+      const it = this.categories.find(item => item.name === name);
+      it.isActive = !it.isActive;
+    },
+    getIcon({name, active}) {
+      return active ? require(`@/assets/images/${name}_OFF.png`) : require(`@/assets/images/${name}_ON.png`);
+    },
+
   }
 }
 </script>

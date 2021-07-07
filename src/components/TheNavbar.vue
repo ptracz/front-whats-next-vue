@@ -5,8 +5,10 @@
     </v-col>
     <v-spacer/>
     <v-col cols="auto">
-      <v-img :src="source" max-height="30" max-width="30">
-      </v-img>
+      <v-btn fab icon small @click="showInfo">
+        <v-img :src="infoImage" max-height="30" max-width="30">
+        </v-img>
+      </v-btn>
     </v-col>
   </v-row>
 </template>
@@ -15,8 +17,13 @@
 export default {
   name: "TheNavbar",
   data: () => ({
-    source: 'https://whatsnext.com.pl/s/contact.png'
+    infoImage: require('@/assets/images/contact.png')
   }),
+  methods: {
+    showInfo() {
+      console.log('info')
+    }
+  },
 }
 </script>
 
