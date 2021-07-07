@@ -11,8 +11,32 @@
         </v-col>
         <v-spacer></v-spacer>
       </v-row>
-      <div> the app
-      </div>
+      <v-row no-gutters style="margin-top: 10px">
+        <v-spacer></v-spacer>
+        <v-col cols="6" style="margin-right: 20px">
+          <v-text-field rounded outlined prepend-inner-icon="mdi-magnify" placeholder="Szukaj" dense
+                        class="mx-4"></v-text-field>
+        </v-col>
+        <v-col cols="1">
+          <v-btn icon outlined style="height: 40px;width: 40px">
+            <v-icon>
+              mdi-map-marker
+            </v-icon>
+          </v-btn>
+        </v-col>
+        <v-spacer></v-spacer>
+      </v-row>
+      <v-row no-gutters>
+        <v-spacer></v-spacer>
+        <v-col cols="8">
+          <v-row no-gutters>
+            <v-col cols="3" v-for="card in cards" :key="card" style="padding: 4px">
+              <v-card height="100px" width="100px"> asda</v-card>
+            </v-col>
+          </v-row>
+        </v-col>
+        <v-spacer></v-spacer>
+      </v-row>
     </v-col>
   </v-row>
 </template>
@@ -28,13 +52,15 @@ export default {
   },
   data: () => ({
     array: [
-      {color: 'rgb(215,17,17)', activeColor: 'gray', isActive: false, 'background-color': 'white'},
-      {color: 'rgb(25,141,37)', activeColor: 'gray', isActive: false, 'background-color': 'white'},
-      {color: 'rgb(38,40,184)', activeColor: 'gray', isActive: false, 'background-color': 'white'},
-      {color: 'rgb(245,191,2)', activeColor: 'gray', isActive: false, 'background-color': 'white'},
-      {color: 'rgb(157,12,224)', activeColor: 'gray', isActive: false, 'background-color': 'white'},
-      {color: 'rgb(0,255,234)', activeColor: 'gray', isActive: false, 'background-color': 'white'}
-    ]
+      {color: 'hsl(0,100%,15%)', activeColor: 'gray', isActive: false, 'background-color': 'white'},
+      {color: 'hsl(0,100%,25%)', activeColor: 'gray', isActive: false, 'background-color': 'white'},
+      {color: 'hsl(0,100%,35%)', activeColor: 'gray', isActive: false, 'background-color': 'white'},
+      {color: 'hsl(0,100%,50%)', activeColor: 'gray', isActive: false, 'background-color': 'white'},
+      {color: 'hsl(0,100%,65%)', activeColor: 'gray', isActive: false, 'background-color': 'white'},
+      {color: 'hsl(0,100%,75%)', activeColor: 'gray', isActive: false, 'background-color': 'white'},
+      {color: 'hsl(0,100%,85%)', activeColor: 'gray', isActive: false, 'background-color': 'white'}
+    ],
+    cards: [1, 2, 3, 4, 7, 1, 43, 4, 1, 234, 12334],
   }),
   methods: {
     changeColor(item) {
@@ -53,7 +79,7 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .category {
   z-index: 999;
   border-radius: 50%;
