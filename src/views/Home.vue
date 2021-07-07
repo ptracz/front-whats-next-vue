@@ -7,7 +7,7 @@
         <v-col v-for="item in computedCategories" :key="item.name" cols="auto">
           <div class="category" :style="{'background-color': item['background-color']}">
             <v-btn fab :color="item.color" @click="changeActive(item.name)" elevation="0">
-              <v-img :src="item.icon" max-height="65" max-width="65">
+              <v-img :src="item.icon" max-height="70" max-width="70">
               </v-img>
             </v-btn>
           </div>
