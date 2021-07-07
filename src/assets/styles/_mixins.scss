@@ -1,0 +1,7 @@
+@mixin border($direction: all, $width: 1px, $color: rgba(0, 0, 0, 0.12)) {
+  @if $direction == all {
+    border: $width solid $color;
+  } @else {
+    border-#{$direction}: $width solid $color;
+  }
+}

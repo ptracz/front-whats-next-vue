@@ -1,0 +1,14 @@
+/*
+File that is used to export variables from SCSS to JS. This file
+is excluded from the CSS builds in order to prevent the variables from
+being exported to CSS twice.
+https://stackoverflow.com/questions/57536228/export-sass-scss-variables-to-javascript-without-exporting-them-to-css
+*/
+
+@import '_variables';
+
+:export {
+  @each $key, $value in $colors {
+    #{unquote($key)}: $value;
+  }
+}

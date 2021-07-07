@@ -5,18 +5,18 @@
     </v-col>
     <v-spacer/>
     <v-col cols="auto">
-      <v-btn fab icon outlined small style="color: #ffcc00">
-        <div class="infoButton">
-          <small>i</small>
-        </div>
-      </v-btn>
+      <v-img :src="source" max-height="30" max-width="30">
+      </v-img>
     </v-col>
   </v-row>
 </template>
 
 <script>
 export default {
-  name: "TheNavbar"
+  name: "TheNavbar",
+  data: () => ({
+    source: 'https://whatsnext.com.pl/s/contact.png'
+  }),
 }
 </script>
 
