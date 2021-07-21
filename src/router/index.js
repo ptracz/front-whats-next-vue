@@ -11,10 +11,15 @@ const routes = [
     component: Home,
     children: [
       {
-        path: 'place/:lid',
+        path: 'place/:place_id',
         name: 'placeInfo',
+        props: {
+          place: true,
+        },
         components: {
-          placeInfo: () => import(/* webpackPrefetch: true */ /* webpackChunkName: "PlaceCard" */ '@/components/PlaceCard'),
+          place:  () =>
+              import(
+                  /* webpackPrefetch: true */ /* webpackChunkName: "PlaceCard" */ '@/components/PlaceCard')
         },
       },
     ]

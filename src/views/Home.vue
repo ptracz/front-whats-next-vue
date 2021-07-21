@@ -29,7 +29,14 @@
         </v-col>
         <v-spacer></v-spacer>
       </v-row>
-      <router-view name="placeInfo"/>
+      <v-row no-gutters>
+        <v-spacer></v-spacer>
+        <v-col cols="10">
+          <router-view name="place" @cardClosed="closeCard"/>
+        </v-col>
+        <v-spacer></v-spacer>
+      </v-row>
+
       <v-row no-gutters>
         <v-spacer></v-spacer>
         <v-col cols="8">
@@ -81,12 +88,18 @@ export default {
     }
   },
   methods: {
+    closeCard() {
+      this.$router.push({
+        name: 'Home',
+      });
+    },
     pickCard(card) {
       this.isCardPicked = !this.isCardPicked;
       this.$router.push({
         name: 'placeInfo',
         params: {
-          lid: card.id,
+          place_id: card.id,
+          place: card
         },
       });
       console.log(card);
