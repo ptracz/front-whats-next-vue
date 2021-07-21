@@ -8,7 +8,16 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: 'place/:lid',
+        name: 'placeInfo',
+        components: {
+          placeInfo: () => import(/* webpackPrefetch: true */ /* webpackChunkName: "PlaceCard" */ '@/components/PlaceCard'),
+        },
+      },
+    ]
   },
   {
     path: '/about',

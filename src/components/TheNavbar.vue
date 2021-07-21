@@ -1,6 +1,6 @@
 <template>
   <v-row no-gutters class="bar">
-    <v-col cols="auto" class="augustFont">
+    <v-col cols="auto" class="augustFont" @click="goToMain" style="cursor: pointer">
       What's Next<span style="color: #ffcc00">?</span>
     </v-col>
     <v-spacer/>
@@ -22,6 +22,9 @@ export default {
   methods: {
     showInfo() {
       console.log('info')
+    },
+    goToMain() {
+      this.$router.push('/')
     }
   },
 }

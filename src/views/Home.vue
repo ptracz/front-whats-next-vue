@@ -29,12 +29,15 @@
         </v-col>
         <v-spacer></v-spacer>
       </v-row>
+      <router-view name="placeInfo"/>
       <v-row no-gutters>
         <v-spacer></v-spacer>
         <v-col cols="8">
           <v-row no-gutters>
-            <v-col cols="3" v-for="card in cards" :key="card" style="padding: 4px">
-              <v-card height="100px" width="100px"> asda</v-card>
+            <v-col cols="3" v-for="card in cards" :key="card.id" style="padding: 4px">
+              <v-card height="100px" width="100px" @click="pickCard(card)">
+              {{card.name}}
+              </v-card>
             </v-col>
           </v-row>
         </v-col>
@@ -63,7 +66,9 @@ export default {
       {isActive: false, name: 'trip'},
       {isActive: false, name: 'monument'}
     ],
-    cards: [1, 2, 3, 4, 7, 1, 43, 4, 1, 234, 12334],
+    pickedCard: undefined,
+    isCardPicked: false,
+    cards: [{name: 'fajne miejsce', id: 1}, {name: 'fajne miejsce 2', id: 2}],
   }),
   computed: {
     computedCategories() {
@@ -76,6 +81,16 @@ export default {
     }
   },
   methods: {
+    pickCard(card) {
+      this.isCardPicked = !this.isCardPicked;
+      this.$router.push({
+        name: 'placeInfo',
+        params: {
+          lid: card.id,
+        },
+      });
+      console.log(card);
+    },
     changeActive(name) {
       const it = this.categories.find(item => item.name === name);
       it.isActive = !it.isActive;
