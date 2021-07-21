@@ -14,6 +14,11 @@
           </v-col>
           <v-spacer />
           <v-col>
+            <v-btn fab color="black" width="15" height="15" @click="copyURL">
+              <v-icon color="blue" size="14">
+                mdi-share-variant
+              </v-icon>
+            </v-btn>
             <v-btn fab color="black" width="15" height="15" @click="closeCard">
               <v-icon color="blue" size="14">
                 mdi-close
@@ -45,6 +50,11 @@ export default {
   methods: {
     closeCard() {
       this.$emit('cardClosed');
+    },
+    copyURL() {
+      const Url = window.location.href;
+      console.log(Url);
+      navigator.clipboard.writeText(Url);
     }
   },
 

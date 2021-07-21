@@ -1,7 +1,7 @@
 <template>
   <v-row no-gutters>
     <v-col cols="12">
-      <the-navbar/>
+      <the-navbar @showInfo="showInfoDialog"/>
       <v-row no-gutters class="justify-space-between">
         <v-spacer></v-spacer>
         <v-col v-for="item in computedCategories" :key="item.name" cols="auto">
@@ -50,6 +50,7 @@
         </v-col>
         <v-spacer></v-spacer>
       </v-row>
+      <main-dialog v-if="isDialogLoaded" :is-visible.sync="isDialogVisible" title-text="test" header-shadow :persistent="false"></main-dialog>
     </v-col>
   </v-row>
 </template>
@@ -57,13 +58,17 @@
 <script>
 
 import TheNavbar from "@/components/TheNavbar";
+import MainDialog from "@/components/MainDialog";
 
 export default {
   name: 'Home',
   components: {
+    MainDialog,
     TheNavbar
   },
   data: () => ({
+    isDialogVisible: false,
+    isDialogLoaded: false,
     categories: [
       {isActive: false, name: 'activity'},
       {isActive: false, name: 'food'},
@@ -88,6 +93,11 @@ export default {
     }
   },
   methods: {
+    showInfoDialog() {
+      console.log('test');
+      this.isDialogLoaded = true;
+      this.isDialogVisible = true;
+    },
     closeCard() {
       this.$router.push({
         name: 'Home',

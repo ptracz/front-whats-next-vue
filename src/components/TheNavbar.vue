@@ -21,7 +21,7 @@ export default {
   }),
   methods: {
     showInfo() {
-      console.log('info')
+      this.$emit('showInfo');
     },
     goToMain() {
       this.$router.push('/')
