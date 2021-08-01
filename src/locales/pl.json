@@ -1,3 +1,15 @@
 {
-  "message": "hello i18n !!"
+  "message": "hello i18n !!",
+  "dialog": {
+    "info": {
+      "contactForm": "Formularz kontaktowy",
+      "name": "Imię",
+      "surname": "Naziwsko",
+      "email": "E-mail*",
+      "phone": "Telefon",
+      "messageSubject": "Temat widomości*",
+      "enterMessage": "Wpisz wiadomość...*",
+      "sendForm": "Wyślij formularz"
+    }
+  }
 }

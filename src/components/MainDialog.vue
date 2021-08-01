@@ -2,15 +2,30 @@
   <v-dialog
       content-class="main-dialog"
       v-model="computedIsVisible"
-      max-width="24%"
+      max-width="40%"
       :persistent="persistent"
       @click:outside.prevent="handleClickOutside"
       :scrollable="false"
       @keydown.enter="onEnterClicked"
   >
-    <v-card>
+    <v-card :style=" isGray? 'background-color: rgba(77,77,77,0.9)' : ''" rounded>
+      <v-card-title
+          class="font-weight-regular"
+      >
+        <slot name="title">
+            <span :class="titleClass">{{ titleText }}</span>
+            <v-spacer></v-spacer>
+          <div class="behindButton">
+            <v-btn icon @click="onClose" small>
+              <v-icon color="error">mdi-close-circle</v-icon>
+            </v-btn>
+          </div>
+
+
+        </slot>
+      </v-card-title>
         <slot name="body">
-          <div style="height: 300px">body</div>
+          <div style="height: 50vh">body</div>
         </slot>
     </v-card>
 
@@ -26,7 +41,15 @@ export default {
       type: Boolean,
       default: false,
     },
+    isGray: {
+      type: Boolean,
+      default: false,
+    },
     titleText: {
+      type:  String,
+      default: '',
+    },
+    titleClass: {
       type:  String,
       default: '',
     },
@@ -70,6 +93,14 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.behindButton {
+  background: white;
+  max-height: 16px;
+  max-width: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>

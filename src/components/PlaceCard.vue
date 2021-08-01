@@ -1,40 +1,42 @@
 <template>
   <div class="test">
-    <div>
-      <v-card color="rgba(0,0,0,0)" class="rounded-xl" width="300" height="300">
-        ZDJĘCIE
-      </v-card>
+    <template v-if="place">
+      <div>
+        <v-card color="rgba(0,0,0,0)" class="rounded-xl" width="300" height="300">
+          ZDJĘCIE
+        </v-card>
 
-    </div>
-    <div>
-      <v-card color="rgba(0,0,0,0)" width="300" height="300">
-        <v-row no-gutters>
-          <v-col>
-            2 ikony
-          </v-col>
-          <v-spacer />
-          <v-col>
-            <v-btn fab color="black" width="15" height="15" @click="copyURL">
-              <v-icon color="blue" size="14">
-                mdi-share-variant
-              </v-icon>
-            </v-btn>
-            <v-btn fab color="black" width="15" height="15" @click="closeCard">
-              <v-icon color="blue" size="14">
-                mdi-close
-              </v-icon>
-            </v-btn>
-          </v-col>
-        </v-row>
-        <v-row no-gutters>
-          <v-col>
-            <div class="placeInfo">
-              {{place.name}}
-            </div>
-          </v-col>
-        </v-row>
-      </v-card>
-    </div>
+      </div>
+      <div>
+        <v-card color="rgba(0,0,0,0)" width="300" height="300">
+          <v-row no-gutters>
+            <v-col>
+              2 ikony
+            </v-col>
+            <v-spacer />
+            <v-col>
+              <v-btn fab color="black" width="15" height="15" @click="copyURL">
+                <v-icon color="blue" size="14">
+                  mdi-share-variant
+                </v-icon>
+              </v-btn>
+              <v-btn fab color="black" width="15" height="15" @click="closeCard">
+                <v-icon color="blue" size="14">
+                  mdi-close
+                </v-icon>
+              </v-btn>
+            </v-col>
+          </v-row>
+          <v-row no-gutters>
+            <v-col>
+              <div class="placeInfo">
+                {{place.name}}
+              </div>
+            </v-col>
+          </v-row>
+        </v-card>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -44,7 +46,7 @@ export default {
   props: {
     place: {
       type: Object,
-      required: true,
+      default: () => {}
     }
   },
   methods: {

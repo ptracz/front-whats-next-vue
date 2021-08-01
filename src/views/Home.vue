@@ -50,7 +50,7 @@
         </v-col>
         <v-spacer></v-spacer>
       </v-row>
-      <main-dialog v-if="isDialogLoaded" :is-visible.sync="isDialogVisible" title-text="test" header-shadow :persistent="false"></main-dialog>
+      <info-dialog v-if="isDialogLoaded" :is-visible.sync="isDialogVisible"></info-dialog>
     </v-col>
   </v-row>
 </template>
@@ -58,12 +58,12 @@
 <script>
 
 import TheNavbar from "@/components/TheNavbar";
-import MainDialog from "@/components/MainDialog";
+import InfoDialog from "@/components/InfoDialog";
 
 export default {
   name: 'Home',
   components: {
-    MainDialog,
+    InfoDialog,
     TheNavbar
   },
   data: () => ({
