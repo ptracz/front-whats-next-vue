@@ -12,7 +12,8 @@ const mutations = {
 const actions = {
     async getCategories({ commit }) {
         const r = await api.get("/WhatsNext/simple/categories");
-        commit("SET_CATEGORIES", r.data.data);
+        console.log(r);
+        commit("SET_CATEGORIES", r.data);
     },
 };
 

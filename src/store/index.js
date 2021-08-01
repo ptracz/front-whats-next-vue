@@ -6,9 +6,9 @@ import simple from "@/store/simple";
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  plugins: [pathify.plugin],
-  strict: process.env.NODE_ENV !== "production",
-  modules: {
-simple
-  }
+    plugins: [pathify.plugin],
+    strict: process.env.NODE_ENV !== "production",
+    modules: {
+        simple
+    }
 })
