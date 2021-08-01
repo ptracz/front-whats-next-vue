@@ -16,11 +16,11 @@
       </v-row>
       <v-row no-gutters style="margin-top: 10px">
         <v-spacer></v-spacer>
-        <v-col cols="6" style="margin-right: 20px">
+        <v-col cols="6">
           <v-text-field rounded outlined prepend-inner-icon="mdi-magnify" placeholder="Szukaj" dense
                         class="mx-4"></v-text-field>
         </v-col>
-        <v-col cols="1">
+        <v-col cols="auto">
           <v-btn icon outlined style="height: 40px;width: 40px">
             <v-icon>
               mdi-map-marker
@@ -43,7 +43,7 @@
           <v-row no-gutters>
             <v-col cols="3" v-for="card in cards" :key="card.id" style="padding: 4px">
               <v-card height="100px" width="100px" @click="pickCard(card)">
-              {{card.name}}
+                {{ card.name }}
               </v-card>
             </v-col>
           </v-row>
@@ -56,6 +56,7 @@
 </template>
 
 <script>
+import {get, call} from "vuex-pathify";
 
 import TheNavbar from "@/components/TheNavbar";
 import InfoDialog from "@/components/InfoDialog";
@@ -83,6 +84,7 @@ export default {
     cards: [{name: 'fajne miejsce', id: 1}, {name: 'fajne miejsce 2', id: 2}],
   }),
   computed: {
+    cat: get('simple/categories'),
     computedCategories() {
       return this.categories.map(item => {
         return {
@@ -93,6 +95,7 @@ export default {
     }
   },
   methods: {
+    getCategories: call('simple/getCategories'),
     showInfoDialog() {
       console.log('test');
       this.isDialogLoaded = true;
@@ -121,7 +124,14 @@ export default {
     getIcon({name, active}) {
       return active ? require(`@/assets/images/${name}_OFF.png`) : require(`@/assets/images/${name}_ON.png`);
     },
+    async init(){
+      await this.getCategories();
+    },
 
+  },
+  mounted() {
+    this.init();
+    console.log(this.cat);
   }
 }
 </script>
