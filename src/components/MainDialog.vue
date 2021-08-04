@@ -13,20 +13,18 @@
           class="font-weight-regular"
       >
         <slot name="title">
-            <span :class="titleClass">{{ titleText }}</span>
-            <v-spacer></v-spacer>
+          <span :class="titleClass">{{ titleText }}</span>
+          <v-spacer></v-spacer>
           <div class="behindButton">
             <v-btn icon @click="onClose" small>
               <v-icon color="error">mdi-close-circle</v-icon>
             </v-btn>
           </div>
-
-
         </slot>
       </v-card-title>
-        <slot name="body">
-          <div style="height: 50vh">body</div>
-        </slot>
+      <slot name="body">
+        <div style="height: 50vh">body</div>
+      </slot>
     </v-card>
 
   </v-dialog>
@@ -46,11 +44,11 @@ export default {
       default: false,
     },
     titleText: {
-      type:  String,
+      type: String,
       default: '',
     },
     titleClass: {
-      type:  String,
+      type: String,
       default: '',
     },
     isVisible: {
@@ -78,7 +76,7 @@ export default {
   },
   methods: {
     handleClickOutside() {
-      return this.persistent ? null : (this.computedIsVisible = false);
+      return this.persistent ? null : (this.onClose());
     },
     onEnterClicked() {
       if (this.isValid) {

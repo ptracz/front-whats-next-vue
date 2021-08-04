@@ -11,7 +11,7 @@
         <v-card color="rgba(0,0,0,0)" width="300" height="300">
           <v-row no-gutters>
             <v-col>
-              2 ikony
+              Ikony kategorii
             </v-col>
             <v-spacer />
             <v-col>
@@ -20,8 +20,8 @@
                   mdi-share-variant
                 </v-icon>
               </v-btn>
-              <v-btn fab color="black" width="15" height="15" @click="closeCard">
-                <v-icon color="blue" size="14">
+              <v-btn fab color="red" width="28" height="28" @click="closeCard">
+                <v-icon color="white" size="26">
                   mdi-close
                 </v-icon>
               </v-btn>

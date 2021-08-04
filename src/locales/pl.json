@@ -11,5 +11,8 @@
       "enterMessage": "Wpisz wiadomość...*",
       "sendForm": "Wyślij formularz"
     }
+  },
+  "rules": {
+    "required": "Wartość wymagana"
   }
 }
