@@ -2,7 +2,7 @@
   <v-row no-gutters>
     <v-col cols="12">
       <the-navbar @showInfo="showInfoDialog"/>
-      <v-row no-gutters class="justify-space-between">
+      <v-row no-gutters justify="space-between">
         <v-spacer></v-spacer>
         <v-col v-for="item in computedCategories" :key="item.name" cols="auto">
           <div class="category" :style="{'background-color': item['background-color']}">
@@ -14,8 +14,7 @@
         </v-col>
         <v-spacer></v-spacer>
       </v-row>
-      <v-row no-gutters style="margin-top: 10px">
-        <v-spacer></v-spacer>
+      <v-row no-gutters justify="center" class="pt-10">
         <v-col cols="6">
           <v-text-field rounded outlined prepend-inner-icon="mdi-magnify" placeholder="Szukaj" dense
                         class="mx-4"></v-text-field>
@@ -27,28 +26,21 @@
             </v-icon>
           </v-btn>
         </v-col>
-        <v-spacer></v-spacer>
       </v-row>
-      <v-row no-gutters>
-        <v-spacer></v-spacer>
+      <v-row no-gutters justify="center">
         <v-col cols="10">
           <router-view name="place" @cardClosed="closeCard"/>
         </v-col>
-        <v-spacer></v-spacer>
       </v-row>
 
-      <v-row no-gutters>
-        <v-spacer></v-spacer>
+      <v-row no-gutters justify="center" class="pt-4">
         <v-col cols="8">
-          <v-row no-gutters>
-            <v-col cols="3" v-for="card in cards" :key="card.id" style="padding: 4px">
-              <v-card height="100px" width="100px" @click="pickCard(card)">
-                {{ card.name }}
-              </v-card>
-            </v-col>
-          </v-row>
+          <div class="cardContainer">
+            <v-card class="placeCard" v-for="card in cards" :key="card.id" @click="pickCard(card)">
+              {{ card.name }}
+            </v-card>
+          </div>
         </v-col>
-        <v-spacer></v-spacer>
       </v-row>
       <info-dialog v-if="isDialogLoaded" :is-visible.sync="isDialogVisible"></info-dialog>
     </v-col>
@@ -81,7 +73,19 @@ export default {
     ],
     pickedCard: undefined,
     isCardPicked: false,
-    cards: [{name: 'fajne miejsce', id: 1}, {name: 'fajne miejsce 2', id: 2}],
+    cards: [
+      {name: 'fajne miejsce', id: 1},
+      {name: 'fajne miejsce 2', id: 2},
+      {name: 'fajne miejsce 3',id: 3},
+      {name: 'fajne miejsce 4', id: 4},
+      {name: 'fajne miejsce 5', id: 5},
+      {name: 'fajne miejsce 6', id: 6},
+      {name: 'fajne miejsce 7', id: 7},
+      {name: 'fajne miejsce 8', id: 8},
+      {name: 'fajne miejsce 2', id: 2},
+      {name: 'fajne miejsce 9', id: 9},
+      {name: 'fajne miejsce 10', id: 10}
+    ],
   }),
   computed: {
     cat: get('simple/categories'),
@@ -124,7 +128,7 @@ export default {
     getIcon({name, active}) {
       return active ? require(`@/assets/images/${name}_OFF.png`) : require(`@/assets/images/${name}_ON.png`);
     },
-    async init(){
+    async init() {
       await this.getCategories();
     },
 
@@ -152,5 +156,19 @@ export default {
   border-radius: 50%;
   width: 54px;
   height: 54px
+}
+
+.cardContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+
+.placeCard {
+  height: 150px;
+  width: 150px;
+  flex:  1 0 auto;
+  min-width: 20%;
 }
 </style>

@@ -1,14 +1,11 @@
 <template>
   <div class="test">
     <template v-if="place">
-      <div>
-        <v-card color="rgba(0,0,0,0)" class="rounded-xl" width="300" height="300">
+        <v-card color="rgba(0,0,0,0)" class="rounded-xl bigCard" width="300" height="300">
           ZDJĘCIE
         </v-card>
 
-      </div>
-      <div>
-        <v-card color="rgba(0,0,0,0)" width="300" height="300">
+        <v-card color="rgba(0,0,0,0)" width="300" height="300" class="rounded-xl bigCard">
           <v-row no-gutters>
             <v-col>
               Ikony kategorii
@@ -35,7 +32,6 @@
             </v-col>
           </v-row>
         </v-card>
-      </div>
     </template>
   </div>
 </template>
@@ -65,10 +61,14 @@ export default {
 
 <style scoped lang="scss">
 .test {
-  display: inline-flex;
+  display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
+  flex-wrap: nowrap;
+  flex: 0 1 50%;
+  gap: 2rem;
+}
+.bigCard {
+  flex: 0 1 38%;
 }
 .placeInfo {
   padding: 30px 20px;
