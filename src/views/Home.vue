@@ -2,8 +2,7 @@
   <v-row no-gutters>
     <v-col cols="12">
       <the-navbar @showInfo="showInfoDialog"/>
-      <v-row no-gutters justify="space-between">
-        <v-spacer></v-spacer>
+      <v-row no-gutters justify="center" class="mx-8 catRow">
         <v-col v-for="item in computedCategories" :key="item.name" cols="auto">
           <div class="category" :style="{'background-color': item['background-color']}">
             <v-btn fab :color="item.color" @click="changeActive(item.name)" elevation="0">
@@ -12,7 +11,6 @@
             </v-btn>
           </div>
         </v-col>
-        <v-spacer></v-spacer>
       </v-row>
       <v-row no-gutters justify="center" class="pt-10">
         <v-col cols="6">
@@ -74,17 +72,42 @@ export default {
     pickedCard: undefined,
     isCardPicked: false,
     cards: [
-      {name: 'fajne miejsce', id: 1},
+      {name: 'fajne miejsce 1', id: 1},
       {name: 'fajne miejsce 2', id: 2},
-      {name: 'fajne miejsce 3',id: 3},
+      {name: 'fajne miejsce 3', id: 3},
       {name: 'fajne miejsce 4', id: 4},
       {name: 'fajne miejsce 5', id: 5},
       {name: 'fajne miejsce 6', id: 6},
       {name: 'fajne miejsce 7', id: 7},
       {name: 'fajne miejsce 8', id: 8},
-      {name: 'fajne miejsce 2', id: 2},
       {name: 'fajne miejsce 9', id: 9},
-      {name: 'fajne miejsce 10', id: 10}
+      {name: 'fajne miejsce 10', id: 10},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
+      {name: 'fajne miejsce 11', id: 11},
     ],
   }),
   computed: {
@@ -165,10 +188,14 @@ export default {
   gap: 2rem;
 }
 
+.catRow {
+
+}
+
 .placeCard {
   height: 150px;
   width: 150px;
-  flex:  1 0 auto;
+  flex: 1 0 auto;
   min-width: 20%;
 }
 </style>
