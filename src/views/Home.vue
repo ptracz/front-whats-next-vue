@@ -34,8 +34,11 @@
       <v-row no-gutters justify="center" class="pt-4">
         <v-col cols="8">
           <div class="cardContainer">
-            <v-card class="placeCard" v-for="card in cards" :key="card.id" @click="pickCard(card)">
-              {{ card.name }}
+            <v-card class="placeCard" v-for="card in computedCards" :key="card.id" @click="pickCard(card)" :style="{
+              height: card.height,
+              width: card.width,
+            }">
+              {{ card.name }} {{card.height}}
             </v-card>
           </div>
         </v-col>
@@ -60,6 +63,7 @@ export default {
   data: () => ({
     isDialogVisible: false,
     isDialogLoaded: false,
+
     categories: [
       {isActive: false, name: 'activity'},
       {isActive: false, name: 'food'},
@@ -119,10 +123,23 @@ export default {
           icon: this.getIcon({name: item.name, active: item.isActive}),
         }
       })
+    },
+    computedCards() {
+      return this.cards.map(item => {
+        return {
+          ...item,
+          height: `${this.getRandomInt(100, 300)}px`,
+        }
+      })
     }
   },
   methods: {
     getCategories: call('simple/getCategories'),
+    getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min)) + min;
+    },
     showInfoDialog() {
       console.log('test');
       this.isDialogLoaded = true;
@@ -174,28 +191,25 @@ export default {
   justify-content: center;
 }
 
-.inside {
-  background-color: red;
-  border-radius: 50%;
-  width: 54px;
-  height: 54px
-}
-
 .cardContainer {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  gap: 2rem;
+  column-count: 4;
+  column-gap: 1em;
 }
-
-.catRow {
-
+@media only screen and (max-width: 960px) {
+  .cardContainer {
+    column-count: 3;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .cardContainer {
+    column-count: 2;
+  }
 }
 
 .placeCard {
-  height: 150px;
-  width: 150px;
-  flex: 1 0 auto;
-  min-width: 20%;
+  background-color: #eee;
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 100%;
 }
 </style>
